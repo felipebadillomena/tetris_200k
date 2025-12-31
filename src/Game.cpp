@@ -2,6 +2,7 @@
 #include <iostream>
 
 SDL_Texture* squareText;
+SDL_Rect srcR, destR;
 Game::Game()
 {
 }
@@ -43,7 +44,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    SDL_Surface* tempSurface = IMG_Load("assets/square.png");
+    SDL_Surface* tempSurface = IMG_Load("assets/perro.jpg");
     if (tempSurface == NULL) {
         std::cout << "Error cargando imagen: " << IMG_GetError() << std::endl;
     }
@@ -70,12 +71,14 @@ void Game::handleEvents()
 
 void Game::update()
 {
+    destR.w = 65;
+    destR.h = 65;
 }
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, squareText, NULL, NULL);
+    SDL_RenderCopy(renderer, squareText, NULL, &destR);
     SDL_RenderPresent(renderer);
 }
 
