@@ -2,33 +2,21 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "C/C++: g++ compilar proyecto (SDL2)",
-            "type": "shell",
-            "command": "g++ -fdiagnostics-color=always -g *.cpp -o main $(pkg-config --cflags --libs sdl2 SDL2_image)",
-            "options": {
-                "cwd": "${fileDirname}"
-            },
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            }
-        },
-        {
             "type": "cppbuild",
-            "label": "C/C++: g++-13 compilar archivo activo",
-            "command": "/usr/bin/g++-13",
+            "label": "Compilar Tetris con SDL2",
+            "command": "/usr/bin/g++",
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${file}",
+                "${workspaceFolder}/src/main.cpp",
+                "${workspaceFolder}/src/Game.cpp",
                 "-o",
-                "${fileDirname}/${fileBasenameNoExtension}"
+                "${workspaceFolder}/tetris_game",
+                "-lSDL2",
+                "-lSDL2_image"
             ],
             "options": {
-                "cwd": "${fileDirname}"
+                "cwd": "${workspaceFolder}"
             },
             "problemMatcher": [
                 "$gcc"
@@ -37,7 +25,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Tarea generada por el depurador."
+            "detail": "Compilación para Linux (Ubuntu/Debian/Fedora)"
         }
     ]
 }

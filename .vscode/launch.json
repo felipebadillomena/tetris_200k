@@ -2,18 +2,25 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Ejecutar main (GDB)",
+            "name": "Debug Tetris",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceFolder}/main",
+            "program": "${workspaceFolder}/tetris_game",
             "args": [],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
-            "externalConsole": true,
+            "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "/usr/bin/gdb",
-            "preLaunchTask": "C/C++: g++ compilar proyecto (SDL2)"
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "preLaunchTask": "Compilar Tetris con SDL2",
+            "miDebuggerPath": "/usr/bin/gdb"
         }
     ]
 }
