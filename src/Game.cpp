@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include <iostream>
 
+SDL_Texture* squareText;
 Game::Game()
 {
 }
@@ -41,6 +42,13 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
     {
         isRunning = false;
     }
+
+    SDL_Surface* tempSurface = IMG_Load("assets/square.png");
+    if (tempSurface == NULL) {
+        std::cout << "Error cargando imagen: " << IMG_GetError() << std::endl;
+    }
+    squareText = SDL_CreateTextureFromSurface(renderer, tempSurface);
+    SDL_FreeSurface(tempSurface);
 }
 
 
@@ -67,6 +75,7 @@ void Game::update()
 void Game::render()
 {
     SDL_RenderClear(renderer);
+    SDL_RenderCopy(renderer, squareText, NULL, NULL);
     SDL_RenderPresent(renderer);
 }
 

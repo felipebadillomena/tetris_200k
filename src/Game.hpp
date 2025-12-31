@@ -3,10 +3,14 @@
 
 #include <SDL2/SDL.h>
 #include <iostream>
+#include <SDL2/SDL_image.h>
 
-class Game
+ 
+ class Game
 {
 public:
+    const int x_size = 10;
+    const int y_size = 20;
     Game();
     ~Game();
 
