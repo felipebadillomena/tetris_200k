@@ -8,8 +8,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}/src/main.cpp",
-                "${workspaceFolder}/src/Game.cpp",
+                "${workspaceFolder}/src/*.cpp",
                 "-o",
                 "${workspaceFolder}/tetris_game",
                 "-lSDL2",
@@ -25,7 +24,7 @@
                 "kind": "build",
                 "isDefault": true
             },
-            "detail": "Compilación para Linux (Ubuntu/Debian/Fedora)"
+            "detail": "Compila automáticamente todos los archivos en la carpeta src"
         }
     ]
 }
