@@ -5,6 +5,9 @@
 
 GameObject* squareObj;
 GameObject* dog;
+
+SDL_Renderer* Game::renderer = nullptr;
+
 Game::Game()
 {
 }
@@ -46,8 +49,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    squareObj = new GameObject("assets/square.png", renderer,0,0,108,108);
-    dog = new GameObject("assets/perro.jpg", renderer,100,100,256,256);
+    squareObj = new GameObject("assets/square.png",0,0,108,108);
+    dog = new GameObject("assets/perro.jpg",100,100,256,256);
      
 }
 
