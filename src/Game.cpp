@@ -1,9 +1,10 @@
 #include "Game.hpp"
 #include "TextureManager.h"
+#include "GameObject.hpp"
 #include <iostream>
 
-SDL_Texture* squareText;
-SDL_Rect srcR, destR;
+GameObject* squareObj;
+GameObject* dog;
 Game::Game()
 {
 }
@@ -45,8 +46,8 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
         isRunning = false;
     }
 
-    squareText = TextureManager::LoadTexture("assets/perro.jpg", renderer);
-
+    squareObj = new GameObject("assets/square.png", renderer,0,0,108,108);
+    dog = new GameObject("assets/perro.jpg", renderer,100,100,256,256);
      
 }
 
@@ -69,14 +70,15 @@ void Game::handleEvents()
 
 void Game::update()
 {
-    destR.w = 65;
-    destR.h = 65;
+    squareObj->Update();
+    dog->Update();
 }
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
-    SDL_RenderCopy(renderer, squareText, NULL, &destR);
+    squareObj->Render();
+    dog->Render();
     SDL_RenderPresent(renderer);
 }
 
