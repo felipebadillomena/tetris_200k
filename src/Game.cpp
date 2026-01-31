@@ -2,9 +2,11 @@
 #include "TextureManager.h"
 #include "GameObject.hpp"
 #include <iostream>
+#include "Map.h"
 
 GameObject* squareObj;
 GameObject* dog;
+Map* map;
 
 SDL_Renderer* Game::renderer = nullptr;
 
@@ -51,6 +53,7 @@ void Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 
     squareObj = new GameObject("assets/square.png",0,0,108,108);
     dog = new GameObject("assets/perro.jpg",100,100,256,256);
+    map = new Map();
      
 }
 
@@ -75,11 +78,13 @@ void Game::update()
 {
     squareObj->Update();
     dog->Update();
+    
 }
 
 void Game::render()
 {
     SDL_RenderClear(renderer);
+    map->DrawMap();
     squareObj->Render();
     dog->Render();
     SDL_RenderPresent(renderer);
